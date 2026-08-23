@@ -7,7 +7,7 @@ const cashierAuth = require('../middleware/cashierAuth');
 
 
 router.post('/orders', controller.createOrder);
-// router.get('/', cashierAuth, controller.listOrders);
+router.get('/', cashierAuth, controller.listOrders);
 router.patch('/:id/status', cashierAuth, controller.updateStatus);
 router.get('/:id/invoice', cashierAuth, controller.getInvoice);
 
