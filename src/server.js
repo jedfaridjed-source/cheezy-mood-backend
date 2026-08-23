@@ -37,5 +37,7 @@ io.on('connection', socket => {
 });
 
 connectDatabase()
-  .then(() => server.listen(port, () => console.log(`Cheezy Mood backend listening on http://localhost:${port}`)))
+  .then(() => app.listen(port, '0.0.0.0', () => {
+  console.log(`Cheezy Mood backend listening on port ${port}`);
+}))
   .catch(err => { console.error('Startup failed:', err); process.exit(1); });
