@@ -1,14 +1,8 @@
-const router = require('express').Router();
-const controller = require('../controllers/order.controller');
-const cashierAuth = require('../middleware/cashierAuth');
-
-
-
-
-
-router.post('/', controller.createOrder);
-// router.get('/', cashierAuth, controller.listOrders);
-router.patch('/:id/status', cashierAuth, controller.updateStatus);
-router.get('/:id/invoice', cashierAuth, controller.getInvoice);
-
-module.exports = router;
+const router=require('express').Router();const c=require('../controllers/order.controller');const auth=require('../middleware/cashierAuth');
+router.post('/',c.createOrder);
+router.post('/cashier',auth,c.createCashierOrder);
+router.get('/',auth,c.listOrders);
+router.get('/dashboard',auth,c.dashboard);
+router.patch('/:id/status',auth,c.updateStatus);
+router.get('/:id/invoice',auth,c.getInvoice);
+module.exports=router;
